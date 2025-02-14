@@ -1,7 +1,6 @@
 package ru.me.bin_info.util
 
 enum class HttpStatusCode(code: Int) {
-    DUMMY(code = 0),
     NOT_CONNECTED(code = -1),
     OK(code = 200),
     BAD_REQUEST(code = 400),
