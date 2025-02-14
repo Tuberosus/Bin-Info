@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/titlesBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="countryTitle, coordinationTitle, cardTypeTitle,
+        bankTitle, bankUrlTitle, bankPhoneTitle, bankCityTitle" />
+
+    <TextView
+        android:id="@+id/countryTitle"
+        style="@style/TitleTextH3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        android:text="@string/country_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/coordinationTitle"
+        style="@style/TitleTextH3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        android:text="@string/coordination_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/countryTitle" />
+
+    <TextView
+        android:id="@+id/cardTypeTitle"
+        style="@style/TitleTextH3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        android:text="@string/card_type_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coordinationTitle" />
+
+    <TextView
+        android:id="@+id/bankTitle"
+        style="@style/TitleTextH1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        android:text="@string/bank_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardTypeTitle" />
+
+    <TextView
+        android:id="@+id/bankUrlTitle"
+        style="@style/TitleTextH3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        android:text="@string/site_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bankTitle" />
+
+    <TextView
+        android:id="@+id/bankPhoneTitle"
+        style="@style/TitleTextH3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        android:text="@string/phone_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bankUrlTitle" />
+
+    <TextView
+        android:id="@+id/bankCityTitle"
+        style="@style/TitleTextH3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        android:text="@string/city_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bankPhoneTitle" />
+
+    <TextView
+        android:id="@+id/countryValue"
+        style="@style/TextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        app:layout_constraintBaseline_toBaselineOf="@id/countryTitle"
+        app:layout_constraintStart_toStartOf="@id/titlesBarrier"
+        tools:text="Россия" />
+
+    <TextView
+        android:id="@+id/coordinationValue"
+        style="@style/TextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        app:layout_constraintBaseline_toBaselineOf="@id/coordinationTitle"
+        app:layout_constraintStart_toStartOf="@id/titlesBarrier"
+        tools:text="50:60" />
+
+    <TextView
+        android:id="@+id/cardTypeValue"
+        style="@style/TextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        app:layout_constraintBaseline_toBaselineOf="@id/cardTypeTitle"
+        app:layout_constraintStart_toStartOf="@id/titlesBarrier"
+        tools:text="Visa" />
+
+    <TextView
+        android:id="@+id/bankUrlValue"
+        style="@style/TextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        app:layout_constraintBaseline_toBaselineOf="@id/bankUrlTitle"
+        app:layout_constraintStart_toStartOf="@id/titlesBarrier"
+        tools:text="www.bank.com" />
+
+    <TextView
+        android:id="@+id/bankPhoneValue"
+        style="@style/TextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        app:layout_constraintBaseline_toBaselineOf="@id/bankPhoneTitle"
+        app:layout_constraintStart_toStartOf="@id/titlesBarrier"
+        tools:text="+7 (800) 000-01-01" />
+
+    <TextView
+        android:id="@+id/bankCityValue"
+        style="@style/TextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        app:layout_constraintBaseline_toBaselineOf="@id/bankCityTitle"
+        app:layout_constraintStart_toStartOf="@id/titlesBarrier"
+        tools:text="Moscow" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

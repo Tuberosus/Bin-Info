@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TitleTextH3">
+        <item name="android:textSize">@dimen/title_size_H3</item>
+    </style>
+
+    <style name="TitleTextH1">
+        <item name="android:textSize">@dimen/title_size_H1</item>
+    </style>
+
+    <style name="TextValue">
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:layout_marginStart">@dimen/text_margin</item>
+    </style>
+
+</resources>
