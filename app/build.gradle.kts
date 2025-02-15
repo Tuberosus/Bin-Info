@@ -69,6 +69,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.gson)
+    implementation(libs.com.squareup.okhttp3.logging.interceptor)
+    implementation(libs.com.squareup.okhttp3.okhttp)
 
     // Room
     implementation(libs.androidx.room.runtime)
