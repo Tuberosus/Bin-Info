@@ -1,10 +1,14 @@
 package ru.me.bin_info.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.me.bin_info.databinding.FragmentSearchBinding
@@ -19,15 +23,18 @@ class SearchFragment : Fragment() {
 
     private val viewModel: SearchViewModel by viewModel()
 
+    private var queryText = DEF_TEXT
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSearchBinding.inflate(inflater,container, false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,6 +43,20 @@ class SearchFragment : Fragment() {
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
             render(state)
+        }
+
+//      забираем текст из поисковой строки
+        binding.queryInput.doOnTextChanged { text, _, _, _ ->
+            queryText = text.toString()
+        }
+
+//        запуск поиска
+        binding.queryInput.setOnEditorActionListener { _, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH && event == null) {
+                viewModel.getBinInfo(queryText)
+                hideKeyboard()
+            }
+            false
         }
     }
 
@@ -99,5 +120,15 @@ class SearchFragment : Fragment() {
             bankPhoneValue.text = bin.bank.phone
             bankCityValue.text = bin.bank.city
         }
+    }
+
+    private fun hideKeyboard() {
+        val imm =
+            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.queryInput.windowToken, 0)
+    }
+
+    companion object {
+        private const val DEF_TEXT = ""
     }
 }

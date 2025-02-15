@@ -6,6 +6,6 @@ import ru.me.bin_info.presentation.SearchViewModel
 
 val viewModelModel = module {
     viewModel<SearchViewModel> {
-        SearchViewModel()
+        SearchViewModel(get())
     }
 }
