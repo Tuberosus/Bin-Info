@@ -3,13 +3,13 @@ package ru.me.bin_info.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.me.bin_info.databinding.FavoriteItemBinding
+import ru.me.bin_info.databinding.HistoryItemBinding
 import ru.me.bin_info.domain.models.HistoryItem
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
     inner class HistoryViewHolder(
-        private val binding: FavoriteItemBinding
+        private val binding: HistoryItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(historyItem: HistoryItem) {
             binding.bin.text = historyItem.bin
@@ -22,7 +22,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
         return HistoryViewHolder(
-            FavoriteItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            HistoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 

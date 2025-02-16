@@ -4,12 +4,9 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import ru.me.bin_info.data.dto.Response
 import ru.me.bin_info.data.dto.bin_info.BinInfoRequest
 import ru.me.bin_info.util.HttpStatusCode
-import java.io.IOException
 
 class RetrofitNetworkClient(
     private val context: Context,
@@ -21,14 +18,12 @@ class RetrofitNetworkClient(
 
         return when (dto) {
             is BinInfoRequest -> {
-                withContext(Dispatchers.IO) {
-                    try {
-                        val response = binlistApiService.getBinIfo(dto.bin)
-                        response.apply { resultCode = HttpStatusCode.OK }
-                    } catch (e: Throwable) {
-                        Log.d("MyTag", "doRequest: $e")
-                        Response().apply { resultCode = HttpStatusCode.INTERNAL_SERVER_ERROR }
-                    }
+                try {
+                    val response = binlistApiService.getBinIfo(dto.bin)
+                    response.apply { resultCode = HttpStatusCode.OK }
+                } catch (e: Throwable) {
+                    Log.d("MyTag", "doRequest: $e")
+                    Response().apply { resultCode = HttpStatusCode.INTERNAL_SERVER_ERROR }
                 }
             }
 

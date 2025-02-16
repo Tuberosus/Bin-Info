@@ -1,18 +1,20 @@
 package ru.me.bin_info.data.database.dao
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
-import ru.me.bin_info.data.database.entities.FavoriteEntity
+import ru.me.bin_info.data.database.entities.HistoryEntity
 
-interface FavoriteDao {
+@Dao
+interface HistoryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFavorite(item: FavoriteEntity)
+    fun insertHistory(item: HistoryEntity)
 
     @Query("SELECT * FROM $TABLE_NAME")
-    suspend fun getFavorite(): Flow<List<FavoriteEntity>>
+    fun getHistory(): Flow<List<HistoryEntity>>
 
     companion object {
         const val TABLE_NAME = "favorite"

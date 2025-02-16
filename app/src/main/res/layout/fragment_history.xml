@@ -12,5 +12,5 @@
        android:layout_height="match_parent"
        android:layout_marginHorizontal="@dimen/recycler_margin"
        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-       tools:listitem="@layout/favorite_item" />
+       tools:listitem="@layout/history_item" />
 </FrameLayout>

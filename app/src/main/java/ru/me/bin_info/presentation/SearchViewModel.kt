@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.me.bin_info.domain.api.GetBinInfoUseCase
 import ru.me.bin_info.domain.models.BinInfo
@@ -23,7 +24,7 @@ class SearchViewModel(
         if (bin.isNotEmpty()) {
             _state.value = SearchScreenState.Loading
 
-            viewModelScope.launch {
+            viewModelScope.launch(Dispatchers.IO) {
                 getBinInfoUseCase.search(bin)
                     .collect{ binInfo ->
                         processResult(binInfo)

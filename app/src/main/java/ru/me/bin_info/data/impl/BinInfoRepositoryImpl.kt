@@ -3,7 +3,7 @@ package ru.me.bin_info.data.impl
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import ru.me.bin_info.data.database.AppDatabase
-import ru.me.bin_info.data.database.entities.FavoriteEntity
+import ru.me.bin_info.data.database.entities.HistoryEntity
 import ru.me.bin_info.data.dto.bin_info.BinInfoRequest
 import ru.me.bin_info.data.dto.bin_info.BinInfoResponse
 import ru.me.bin_info.data.network.NetworkClient
@@ -29,7 +29,7 @@ class BinInfoRepositoryImpl(
                         cardType = brand,
                         bank = bank
                     )
-                    saveInFavorite(bin, data)
+                    saveInHistory(bin, data)
                     Resource.Success(data)
                 }
             }
@@ -42,13 +42,13 @@ class BinInfoRepositoryImpl(
         })
     }
 
-    private suspend fun saveInFavorite(bin: String, data: Bin) {
-        val entity = FavoriteEntity(
+    private suspend fun saveInHistory(bin: String, data: Bin) {
+        val entity = HistoryEntity(
             bin = bin,
             bankName = data.bank.name,
             country = data.country,
             addTime = System.currentTimeMillis()
         )
-        db.favoriteDao().insertFavorite(entity)
+        db.historyDao().insertHistory(entity)
     }
 }
