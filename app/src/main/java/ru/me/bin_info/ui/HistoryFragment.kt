@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.me.bin_info.databinding.FragmentHistoryBinding
+import ru.me.bin_info.domain.models.HistoryItem
 import ru.me.bin_info.presentation.HistoryViewModel
 
 class HistoryFragment : Fragment() {
@@ -27,5 +28,17 @@ class HistoryFragment : Fragment() {
     ): View {
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.state.observe(viewLifecycleOwner) { historyList ->
+            render(historyList)
+        }
+    }
+
+    private fun render(historyList: List<HistoryItem>) {
+
     }
 }
