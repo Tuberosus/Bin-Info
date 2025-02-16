@@ -6,6 +6,6 @@ import ru.me.bin_info.domain.api.BinInfoRepository
 
 val repositoryModule = module {
     single<BinInfoRepository> {
-        BinInfoRepositoryImpl(get())
+        BinInfoRepositoryImpl(get(), get())
     }
 }
