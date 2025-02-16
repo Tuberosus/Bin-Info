@@ -2,6 +2,7 @@
 <resources>
     <dimen name="padding_size">16dp</dimen>
     <dimen name="text_margin">8dp</dimen>
+    <dimen name="recycler_margin">4dp</dimen>
     <dimen name="title_size_H1">28sp</dimen>
     <dimen name="title_size_H3">20sp</dimen>
     <dimen name="text_size">14sp</dimen>

@@ -17,6 +17,8 @@ class HistoryFragment : Fragment() {
 
     private val viewModel: HistoryViewModel by viewModel()
 
+    private val adapter = HistoryAdapter()
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
@@ -39,6 +41,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun render(historyList: List<HistoryItem>) {
-
+        adapter.historyItemList = historyList
+        binding.historyRecycler.adapter = adapter
     }
 }
