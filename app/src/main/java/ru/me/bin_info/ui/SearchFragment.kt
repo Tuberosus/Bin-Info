@@ -17,6 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.me.bin_info.R
 import ru.me.bin_info.databinding.FragmentSearchBinding
 import ru.me.bin_info.domain.models.Bin
+import ru.me.bin_info.presentation.NavigationIntent
 import ru.me.bin_info.presentation.SearchScreenState
 import ru.me.bin_info.presentation.SearchViewModel
 import java.util.Locale
@@ -68,6 +69,21 @@ class SearchFragment : Fragment() {
 //      очистка поисковой строки
         binding.closeIcon.setOnClickListener {
             viewModel.setEmptyState()
+        }
+
+//        открыть карту
+        binding.searchResult.coordinationValue.setOnClickListener {
+            viewModel.processActionIntent(NavigationIntent.Map)
+        }
+
+//        открыть браузер
+        binding.searchResult.bankUrlValue.setOnClickListener {
+            viewModel.processActionIntent(NavigationIntent.Url)
+        }
+
+//        набор номера
+        binding.searchResult.bankPhoneValue.setOnClickListener {
+            viewModel.processActionIntent(NavigationIntent.Dial)
         }
     }
 
