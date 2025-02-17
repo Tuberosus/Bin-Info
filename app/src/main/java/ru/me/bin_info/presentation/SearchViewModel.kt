@@ -33,6 +33,10 @@ class SearchViewModel(
         }
     }
 
+    fun setEmptyState() {
+        _state.value = SearchScreenState.Empty
+    }
+
     private fun processResult(binInfo: BinInfo) {
         when {
             binInfo.errorMessage != null-> {

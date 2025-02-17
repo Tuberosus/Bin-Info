@@ -6,8 +6,9 @@
     <string name="country_title">Страна:</string>
     <string name="coordination_title">Координаты:</string>
     <string name="card_type_title">Тип карты:</string>
-    <string name="bank_title">Банк</string>
+    <string name="bank_title">Банк:</string>
     <string name="site_title">Сайт:</string>
     <string name="phone_title">Телефон:</string>
     <string name="city_title">Город:</string>
+    <string name="coordination_format">lat: %s, lon: %s</string>
 </resources>

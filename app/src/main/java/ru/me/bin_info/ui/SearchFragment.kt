@@ -1,7 +1,10 @@
 package ru.me.bin_info.ui
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +14,12 @@ import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import ru.me.bin_info.R
 import ru.me.bin_info.databinding.FragmentSearchBinding
 import ru.me.bin_info.domain.models.Bin
 import ru.me.bin_info.presentation.SearchScreenState
 import ru.me.bin_info.presentation.SearchViewModel
+import java.util.Locale
 
 class SearchFragment : Fragment() {
 
@@ -59,6 +64,11 @@ class SearchFragment : Fragment() {
             }
             false
         }
+
+//      очистка поисковой строки
+        binding.closeIcon.setOnClickListener {
+            viewModel.setEmptyState()
+        }
     }
 
     private fun render(state: SearchScreenState) {
@@ -81,6 +91,9 @@ class SearchFragment : Fragment() {
         searchResultVisibility(false)
         errorMessageVisibility(false)
         progressBarVisibility(false)
+
+        binding.queryInput.setText(DEF_TEXT)
+        hideKeyboard()
     }
 
     private fun showError(state: SearchScreenState.Error) {
@@ -115,11 +128,15 @@ class SearchFragment : Fragment() {
     private fun setSearchResult(bin: Bin) {
         binding.searchResult.apply {
             countryValue.text = bin.country
-            coordinationValue.text = "${bin.lat}  ${bin.lon}"
+
+            coordinationValue.text = getString(
+                R.string.coordination_format, bin.lat.toString(), bin.lon.toString())
+
             cardTypeValue.text = bin.cardType
-            bankUrlValue.text = bin.bank!!.url
-            bankPhoneValue.text = bin.bank.phone
-            bankCityValue.text = bin.bank.city
+            bankTitle.text = bin.bank!!.name
+            bankUrlValue.text = bin.bank.url ?: "-"
+            bankPhoneValue.text = bin.bank.phone ?: "-"
+            bankCityValue.text = bin.bank.city ?: "-"
         }
     }
 

@@ -9,13 +9,14 @@
         android:id="@+id/titlesBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:barrierMargin="@dimen/padding_size"
         app:barrierDirection="end"
         app:constraint_referenced_ids="countryTitle, coordinationTitle, cardTypeTitle,
-        bankTitle, bankUrlTitle, bankPhoneTitle, bankCityTitle" />
+        bankUrlTitle, bankPhoneTitle, bankCityTitle" />
 
     <TextView
         android:id="@+id/countryTitle"
-        style="@style/TitleTextH3"
+        style="@style/TextValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
@@ -25,7 +26,7 @@
 
     <TextView
         android:id="@+id/coordinationTitle"
-        style="@style/TitleTextH3"
+        style="@style/TextValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
@@ -35,7 +36,7 @@
 
     <TextView
         android:id="@+id/cardTypeTitle"
-        style="@style/TitleTextH3"
+        style="@style/TextValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
@@ -45,17 +46,17 @@
 
     <TextView
         android:id="@+id/bankTitle"
-        style="@style/TitleTextH1"
+        style="@style/TitleTextH3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_margin"
-        android:text="@string/bank_title"
+        android:layout_marginTop="@dimen/padding_size"
+        tools:text="@string/bank_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardTypeTitle" />
 
     <TextView
         android:id="@+id/bankUrlTitle"
-        style="@style/TitleTextH3"
+        style="@style/TextValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
@@ -65,7 +66,7 @@
 
     <TextView
         android:id="@+id/bankPhoneTitle"
-        style="@style/TitleTextH3"
+        style="@style/TextValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
@@ -75,7 +76,7 @@
 
     <TextView
         android:id="@+id/bankCityTitle"
-        style="@style/TitleTextH3"
+        style="@style/TextValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
@@ -85,7 +86,7 @@
 
     <TextView
         android:id="@+id/countryValue"
-        style="@style/TextValue"
+        style="@style/TitleTextH3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
@@ -95,7 +96,7 @@
 
     <TextView
         android:id="@+id/coordinationValue"
-        style="@style/TextValue"
+        style="@style/TitleTextH3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
@@ -105,7 +106,7 @@
 
     <TextView
         android:id="@+id/cardTypeValue"
-        style="@style/TextValue"
+        style="@style/TitleTextH3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
@@ -115,7 +116,7 @@
 
     <TextView
         android:id="@+id/bankUrlValue"
-        style="@style/TextValue"
+        style="@style/TitleTextH3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
@@ -125,7 +126,7 @@
 
     <TextView
         android:id="@+id/bankPhoneValue"
-        style="@style/TextValue"
+        style="@style/TitleTextH3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
@@ -135,7 +136,7 @@
 
     <TextView
         android:id="@+id/bankCityValue"
-        style="@style/TextValue"
+        style="@style/TitleTextH3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
