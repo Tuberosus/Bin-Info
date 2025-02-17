@@ -17,6 +17,6 @@ interface HistoryDao {
     fun getHistory(): Flow<List<HistoryEntity>>
 
     companion object {
-        const val TABLE_NAME = "favorite"
+        const val TABLE_NAME = "history"
     }
 }
