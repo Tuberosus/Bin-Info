@@ -1,10 +1,11 @@
 package ru.me.bin_info.util
 
-enum class HttpStatusCode(code: Int) {
-    NOT_CONNECTED(code = -1),
-    OK(code = 200),
-    BAD_REQUEST(code = 400),
-    NOT_FOUND(code = 404),
-    HIT_LIMIT(code = 429),
-    INTERNAL_SERVER_ERROR(code = 500),
+enum class HttpStatusCode {
+    NOT_CONNECTED, // -1
+    CLARIFY_REQUEST, // 0
+    OK, // 200
+    BAD_REQUEST, // 400
+    NOT_FOUND, // 404
+    HIT_LIMIT, // 429
+    INTERNAL_SERVER_ERROR, // 500
 }

@@ -7,5 +7,5 @@ data class Bin(
     val lon: Int,
     val lat: Int,
     val cardType: String,
-    val bank: Bank
+    val bank: Bank?
 )

@@ -23,17 +23,17 @@ class BinInfoRepositoryImpl(
             HttpStatusCode.OK -> {
                 with(response as BinInfoResponse) {
                     val data = Bin(
-                        country = country.name,
+                        country = country!!.name,
                         lon = country.longitude,
                         lat = country.latitude,
-                        cardType = brand,
+                        cardType = brand!!,
                         bank = bank
                     )
                     saveInHistory(bin, data)
                     Resource.Success(data)
                 }
             }
-
+            HttpStatusCode.CLARIFY_REQUEST -> Resource.Error("Уточните запрос")
             HttpStatusCode.NOT_CONNECTED -> Resource.Error("Проверьте подключение к сети")
             HttpStatusCode.BAD_REQUEST -> Resource.Error("Ошибка запроса")
             HttpStatusCode.NOT_FOUND -> Resource.Error("Не найдено")
@@ -45,7 +45,7 @@ class BinInfoRepositoryImpl(
     private suspend fun saveInHistory(bin: String, data: Bin) {
         val entity = HistoryEntity(
             bin = bin,
-            bankName = data.bank.name,
+            bankName = data.bank!!.name,
             country = data.country,
             addTime = System.currentTimeMillis()
         )

@@ -4,8 +4,10 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
+import retrofit2.HttpException
 import ru.me.bin_info.data.dto.Response
 import ru.me.bin_info.data.dto.bin_info.BinInfoRequest
+import ru.me.bin_info.data.dto.bin_info.BinInfoResponse
 import ru.me.bin_info.util.HttpStatusCode
 
 class RetrofitNetworkClient(
@@ -19,8 +21,22 @@ class RetrofitNetworkClient(
         return when (dto) {
             is BinInfoRequest -> {
                 try {
-                    val response = binlistApiService.getBinIfo(dto.bin)
-                    response.apply { resultCode = HttpStatusCode.OK }
+                    val response = binlistApiService.getBinIfo(bin = dto.bin)
+                    if (checkEmpty(response)) {
+                        response.apply { resultCode = HttpStatusCode.CLARIFY_REQUEST }
+                    } else {
+                        response.apply { resultCode = HttpStatusCode.OK }
+                    }
+                } catch (e: HttpException) {
+                    Log.d("MyTag", "doRequest: $e")
+                    Response().apply {
+                        resultCode = when (e.code()) {
+                            400 -> HttpStatusCode.BAD_REQUEST
+                            404 -> HttpStatusCode.NOT_FOUND
+                            429 -> HttpStatusCode.HIT_LIMIT
+                            else -> HttpStatusCode.INTERNAL_SERVER_ERROR
+                        }
+                    }
                 } catch (e: Throwable) {
                     Log.d("MyTag", "doRequest: $e")
                     Response().apply { resultCode = HttpStatusCode.INTERNAL_SERVER_ERROR }
@@ -45,5 +61,11 @@ class RetrofitNetworkClient(
             }
         }
         return false
+    }
+
+    private fun checkEmpty(response: BinInfoResponse): Boolean {
+        return response.country == null
+                || response.bank == null
+                || response.brand == null
     }
 }

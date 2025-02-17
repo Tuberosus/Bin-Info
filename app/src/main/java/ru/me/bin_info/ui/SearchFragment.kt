@@ -48,6 +48,7 @@ class SearchFragment : Fragment() {
 //      забираем текст из поисковой строки
         binding.queryInput.doOnTextChanged { text, _, _, _ ->
             queryText = text.toString()
+            binding.closeIcon.isVisible = !text.isNullOrEmpty()
         }
 
 //        запуск поиска
@@ -116,7 +117,7 @@ class SearchFragment : Fragment() {
             countryValue.text = bin.country
             coordinationValue.text = "${bin.lat}  ${bin.lon}"
             cardTypeValue.text = bin.cardType
-            bankUrlValue.text = bin.bank.url
+            bankUrlValue.text = bin.bank!!.url
             bankPhoneValue.text = bin.bank.phone
             bankCityValue.text = bin.bank.city
         }
